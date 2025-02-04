@@ -40,7 +40,7 @@ function outputToPower(number, power) {
 function findCommonDividers(a, b) {
     let i = Math.min(a, b)
     while (i > 0) {
-        if ((a % i == 0) && (b % i == 0)) {
+        if ((a % i === 0) && (b % i === 0)) {
             console.log(i);
         }
         i--;
@@ -65,7 +65,7 @@ function getFactorial(x) {
 function checkUserMath() {
     do {
         userAnswer = +prompt('Сколько будет 2 + 2 * 2?')
-    } while (userAnswer != 6)
+    } while (userAnswer !== 6)
 
     alert('Правильно!');
     return 'Completed!';

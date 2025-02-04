@@ -11,7 +11,7 @@ function sumRange(min, max) {
 function findNOD(a, b) {
     let i = Math.min(a, b)
     while (i > 0) {
-        if ((a % i == 0) && (b % i == 0)) {
+        if ((a % i === 0) && (b % i === 0)) {
             return i;
         }
         i--;
@@ -22,7 +22,7 @@ function findNOD(a, b) {
 // Запросить у пользователя число и вывести все делители этого числа.
 function findDividers(x) {
     for (let i = x; i > 0; i--) {
-        if (x % i == 0) {
+        if (x % i === 0) {
             console.log(i);
         }
     }
@@ -59,10 +59,10 @@ function numberAnalysis() {
         x = +prompt(`${i}. Введите случайное число:`)
 
         if (x > 0) positive++;
-        else if (x == 0) neutral++;
+        else if (x === 0) neutral++;
         else negative++;
 
-        if (x % 2 == 0) even++;
+        if (x % 2 === 0) even++;
         else odd++;
     }
     
