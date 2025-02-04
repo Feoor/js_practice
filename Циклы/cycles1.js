@@ -63,6 +63,7 @@ function getFactorial(x) {
 
 // Предлагать пользователю решить пример 2 + 2 * 2 до тех пор, пока он не решит его правильно.
 function checkUserMath() {
+    let userAnswer;
     do {
         userAnswer = +prompt('Сколько будет 2 + 2 * 2?')
     } while (userAnswer !== 6)
@@ -73,8 +74,8 @@ function checkUserMath() {
 
 // Делить число 1000 на 2 до тех пор, пока не получится число меньше 50. Вывести это число и сколько делений произвели.
 function division1000() {
-    a = 1000;
-    count = 0;
+    let a = 1000;
+    let count = 0;
 
     do {
         a /= 2;
