@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+
+<script>
+    const body = document.body;
+    body.style = `
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        color: #333;
+        padding: 20px;
+        margin: 0;
+    `;
+
+    // Заполняем информацию об пользователе
+    const userName = prompt('Введите ваше имя:');
+    const userAge = prompt('Введите ваш возраст:');
+    const userEmail = prompt('Введите ваш email:');
+    const userPhone = prompt('Введите ваш телефон:');
+
+    body.innerHTML = `
+        <h1 id="title">Ваш профиль</h1>
+        <div id="UserCard">
+            <div id="UserProfile"><img src="icon-profile.png" alt="Профиль"></div>
+            <div id="UserInfo">
+                <h2 id="UserName">Имя: ${userName}</h2>
+                <h3 id="UserAge">Возраст: ${userAge}</h3>
+                <p id="UserEmail">E-mail: ${userEmail}</p>
+            </div>
+
+            <a id="UserPhone" href="tel:+${userPhone}">Позвонить</a>
+        </div>
+    `;
+
+    // Изменяем стиль заголовка
+    const title = document.querySelector('h1');
+    title.textContent = 'Ваш профиль';
+    title.style.color = '#20af3e';
+    title.style.fontSize = '62px';
+    title.style.textAlign = 'center';
+
+    // Изменяем стиль карточки пользователя
+    const userCard = document.querySelector('#UserCard');
+    userCard.style = `
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 450px;
+        margin: auto;
+    `;
+
+    // Изменяем стиль профиля пользователя
+    const userProfile = document.querySelector('#UserProfile');
+    userProfile.style = `
+        display: flex;
+        justify-content: center;
+        width: 16.6666%;
+        height: max-content;
+        overflow: hidden;
+    `;
+
+    const userInfo = document.querySelector('#UserInfo');
+    userInfo.style = `
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 74.99997%;
+        padding-left: 20px;
+    `;
+
+    const userCardName = document.querySelector('#UserName');
+    userCardName.style = `
+        font-size: 24px;
+        color: #333;
+        margin: 0;
+    `;
+    const userCardAge = document.querySelector('#UserAge');
+    userCardAge.style = `
+        font-size: 18px;
+        color: #666;
+        margin: 0;
+    `;
+    const userCardEmail = document.querySelector('#UserEmail');
+    userCardEmail.style = `
+        font-size: 16px;
+        color: #999;
+        margin-top: 10px;
+    `;
+
+    const userPhoneButton = document.querySelector('#UserPhone');
+    userPhoneButton.style = `
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: lightgray;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+    `;
+    userPhoneButton.addEventListener('mouseenter', () => {
+        userPhoneButton.style.backgroundColor = '#20af3e';
+    });
+    userPhoneButton.addEventListener('mouseleave', () => {
+        userPhoneButton.style.backgroundColor = 'lightgray';
+    });
+</script>
+</body>
+</html>
