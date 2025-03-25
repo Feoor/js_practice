@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f7f7f7 !important;
+}
+
+/* 1 Задание */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table thead tr > th {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    transition: background-color .3s ease;
+}
+table tbody tr > td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color .3s ease;
+}
+
+/* 3 Задание */
+.btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* 4 Задание */
+.calculator__wrapper button {
+    background-color: #1C1C1C;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+
+.calculator__wrapper button:hover {
+    background-color: #333;
+}
