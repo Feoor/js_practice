@@ -37,6 +37,9 @@ noContextBlock.addEventListener("contextmenu", function(event) {
     event.preventDefault();
     alert("Контекстное меню отключено");
 })
+noContextBlock.addEventListener("mousedown", function(event) {
+    event.preventDefault();
+})
 
 // 3 Задание
 const likeButton = document.querySelector("#likeButton");
@@ -56,8 +59,6 @@ for (const button of calculatorButtons.children) {
         const buttonValue = event.target.innerHTML;
 
         if (buttonValue === "=") {
-            console.log(calculatorBroker);
-
             if (calculatorBroker.length === 0) {
                 return false;
             }
@@ -125,3 +126,23 @@ for (const button of calculatorButtons.children) {
         }
     })
 }
+
+// 5 Задание
+const categoriesNav = document.querySelector("#categoriesNav");
+const dropdownButton = categoriesNav.querySelector(".dropdown-button");
+const dropdownMenu = categoriesNav.querySelector(".dropdown-menu-categories");
+
+dropdownButton.addEventListener("click", function(event) {
+    event.stopPropagation();
+    dropdownMenu.classList.toggle("dropdown-menu--active");
+})
+
+// 6 Задание
+const toTopButton = document.querySelector("#toTopButton");
+
+toTopButton.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+});

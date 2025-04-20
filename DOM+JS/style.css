@@ -42,3 +42,45 @@ table tbody tr > td {
 .calculator__wrapper button:hover {
     background-color: #333;
 }
+
+/* 5 Задание */
+.nav-item {
+    position: relative;
+    text-align: center;
+}
+.dropdown-menu-categories {
+    display: none;
+    position: absolute;
+    background-color: #212529;
+    color: #ffffff8c;
+    list-style: none;
+    padding: 0;
+}
+.dropdown-menu-categories > li {
+    padding: 12px 24px;
+    cursor: pointer;
+}
+.dropdown-menu-categories > li:hover {
+    background-color: #343a40;
+    color: #ffffffbf;
+}
+.dropdown-menu--active {
+    display: block;
+}
+
+/* 6 Задание */
+.to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.to-top-button {
+    width: 48px;
+    height: 48px;
+}
