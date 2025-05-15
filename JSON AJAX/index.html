@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM + JS</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+
+<!-- 1 Задание, карточки пользователей -->
+<div class="container">
+  <div class="row mt-5 justify-content-around">
+    <div class="col-3">
+      <div class="card user-card" style="width: 18rem;">
+        <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title card-name">Profile Name</h5>
+          <p class="card-email">Profile e-mail</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="card user-card" style="width: 18rem;">
+        <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title card-name">Profile Name</h5>
+          <p class="card-email">Profile e-mail</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Кнопки управления -->
+  <div class="row justify-content-around mt-4">
+    <button class="btn btn-primary w-25" id="prevButton">Назад</button>
+    <button class="btn btn-primary w-25" id="nextButton">Вперед</button>
+  </div>
+</div>
+
+<!-- 2 Задание-->
+
+
+<script src="main.js"></script>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
