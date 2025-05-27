@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM + JS</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    .progressbar-wrapper {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .progressbar {
+      background: #007bff;
+      transition: width 0.5s ease;
+    }
+    tr:nth-child(even) .progressbar {
+        background: #28a745;
+    }
+    table {
+      width: 100%;
+    }
+    th, td {
+      text-align: center;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 1 Задание, гистограмма -->
+<div class="container mt-5">
+  <h1>1 Задание</h1>
+  <p>Анимированная гистограмма</p>
+
+  <div class="histogram-users-rating">
+    <div class="container">
+
+    </div>
+  </div>
+</div>
+
+<!-- 2 Задание, гистограмма мировой популяции -->
+<div class="container mt-5">
+  <h1>2 Задание</h1>
+  <p>Анимированная гистограмма популяции мира</p>
+
+  <div class="histogram-population">
+    <div class="container">
+
+    </div>
+  </div>
+</div>
+
+<script>
+// 1 Задание, гистограмма
+const usersRatingData = {
+    "header": "User rating",
+    "maxvalue": 254,
+    "data": [
+        {"name": "5 stars", "value": 150},
+        {"name": "4 stars", "value": 63},
+        {"name": "3 stars", "value": 15},
+        {"name": "2 stars", "value": 6},
+        {"name": "1 stars", "value": 20},
+    ]
+}
+
+const usersRatingContainer = document.querySelector('.histogram-users-rating .container');
+let title = document.createElement('h2');
+title.textContent = usersRatingData.header;
+title.classList.add('text-center', 'mb-4');
+usersRatingContainer.appendChild(title);
+
+let table = document.createElement('table');
+table.classList.add('table');
+table.innerHTML = `
+    <tbody>
+        ${usersRatingData.data.map(item => `
+            <tr class="d-flex align-items-center">
+                <td style="flex: 0 0 100px;">${item.name}</td>
+                <td style="flex: 1 0 auto;">
+                  <div class="progressbar-wrapper" style="width: 100%;">
+                    <div class="progressbar progressbar-users-rating" style="width: 0; height: 30px;"></div>
+                  </div>
+                </td>
+                <td style="flex: 0 0 100px;">${item.value}</td>
+            </tr>`).join('')}
+    </tbody>
+`;
+usersRatingContainer.appendChild(table);
+
+// 2 Задание, гистограмма мировой популяции
+const worldPopulationData = {
+    "header": "World Population",
+    "maxvalue": 2000000000,
+    "data": [
+        {
+            "year": "1969",
+            "yearPopulationData": [
+                {"name": "China", "value": 800000000},
+                {"name": "India", "value": 550000000},
+                {"name": "USA", "value": 200000000},
+                {"name": "Indonesia", "value": 120000000},
+                {"name": "Brazil", "value": 90000000},
+                {"name": "Russia", "value": 130000000},
+                {"name": "Pakistan", "value": 60000000},
+                {"name": "Bangladesh", "value": 70000000},
+                {"name": "Nigeria", "value": 50000000},
+                {"name": "Japan", "value": 100000000}
+            ]
+        },
+        {
+            "year": "1970",
+            "yearPopulationData": [
+                {"name": "China", "value": 820000000},
+                {"name": "India", "value": 560000000},
+                {"name": "USA", "value": 205000000},
+                {"name": "Indonesia", "value": 125000000},
+                {"name": "Brazil", "value": 95000000},
+                {"name": "Russia", "value": 132000000},
+                {"name": "Pakistan", "value": 62000000},
+                {"name": "Bangladesh", "value": 72000000},
+                {"name": "Nigeria", "value": 52000000},
+                {"name": "Japan", "value": 103000000}
+            ],
+        },
+        {
+            "year": "1971",
+            "yearPopulationData": [
+                {"name": "China", "value": 840000000},
+                {"name": "India", "value": 570000000},
+                {"name": "USA", "value": 210000000},
+                {"name": "Indonesia", "value": 130000000},
+                {"name": "Brazil", "value": 100000000},
+                {"name": "Russia", "value": 135000000},
+                {"name": "Pakistan", "value": 64000000},
+                {"name": "Bangladesh", "value": 74000000},
+                {"name": "Nigeria", "value": 54000000},
+                {"name": "Japan", "value": 106000000}
+            ]
+        },
+        {
+            "year": "1972",
+            "yearPopulationData": [
+                {"name": "China", "value": 860000000},
+                {"name": "India", "value": 580000000},
+                {"name": "USA", "value": 215000000},
+                {"name": "Indonesia", "value": 135000000},
+                {"name": "Brazil", "value": 105000000},
+                {"name": "Russia", "value": 138000000},
+                {"name": "Pakistan", "value": 66000000},
+                {"name": "Bangladesh", "value": 76000000},
+                {"name": "Nigeria", "value": 56000000},
+                {"name": "Japan", "value": 109000000}
+            ]
+        },
+        {
+            "year": "1973",
+            "yearPopulationData": [
+                {"name": "China", "value": 880000000},
+                {"name": "India", "value": 590000000},
+                {"name": "USA", "value": 220000000},
+                {"name": "Indonesia", "value": 140000000},
+                {"name": "Brazil", "value": 110000000},
+                {"name": "Russia", "value": 141000000},
+                {"name": "Pakistan", "value": 68000000},
+                {"name": "Bangladesh", "value": 78000000},
+                {"name": "Nigeria", "value": 58000000},
+                {"name": "Japan", "value": 112000000}
+            ]
+        },
+        {
+            "year": "1974",
+            "yearPopulationData": [
+                {"name": "China", "value": 900000000},
+                {"name": "India", "value": 600000000},
+                {"name": "USA", "value": 225000000},
+                {"name": "Indonesia", "value": 145000000},
+                {"name": "Brazil", "value": 115000000},
+                {"name": "Russia", "value": 144000000},
+                {"name": "Pakistan", "value": 70000000},
+                {"name": "Bangladesh", "value": 80000000},
+                {"name": "Nigeria", "value": 60000000},
+                {"name": "Japan", "value": 115000000}
+            ]
+        },
+        {
+            "year": "1975",
+            "yearPopulationData": [
+                {"name": "China", "value": 920000000},
+                {"name": "India", "value": 610000000},
+                {"name": "USA", "value": 230000000},
+                {"name": "Indonesia", "value": 150000000},
+                {"name": "Brazil", "value": 120000000},
+                {"name": "Russia", "value": 147000000},
+                {"name": "Pakistan", "value": 72000000},
+                {"name": "Bangladesh", "value": 82000000},
+                {"name": "Nigeria", "value": 62000000},
+                {"name": "Japan", "value": 118000000}
+            ]
+        },
+        {
+            "year": "1976",
+            "yearPopulationData": [
+                {"name": "China", "value": 940000000},
+                {"name": "India", "value": 620000000},
+                {"name": "USA", "value": 235000000},
+                {"name": "Indonesia", "value": 155000000},
+                {"name": "Brazil", "value": 125000000},
+                {"name": "Russia", "value": 150000000},
+                {"name": "Pakistan", "value": 74000000},
+                {"name": "Bangladesh", "value": 84000000},
+                {"name": "Nigeria", "value": 64000000},
+                {"name": "Japan", "value": 121000000}
+            ]
+        },
+        {
+            "year": "1977",
+            "yearPopulationData": [
+                {"name": "China", "value": 960000000},
+                {"name": "India", "value": 630000000},
+                {"name": "USA", "value": 240000000},
+                {"name": "Indonesia", "value": 160000000},
+                {"name": "Brazil", "value": 130000000},
+                {"name": "Russia", "value": 153000000},
+                {"name": "Pakistan", "value": 76000000},
+                {"name": "Bangladesh", "value": 86000000},
+                {"name": "Nigeria", "value": 66000000},
+                {"name": "Japan", "value": 124000000}
+            ]
+        },
+        {
+            "year": "1978",
+            "yearPopulationData": [
+                {"name": "China", "value": 980000000},
+                {"name": "India", "value": 640000000},
+                {"name": "USA", "value": 245000000},
+                {"name": "Indonesia", "value": 165000000},
+                {"name": "Brazil", "value": 135000000},
+                {"name": "Russia", "value": 156000000},
+                {"name": "Pakistan", "value": 78000000},
+                {"name": "Bangladesh", "value": 88000000},
+                {"name": "Nigeria", "value": 68000000},
+                {"name": "Japan", "value": 127000000}
+            ]
+        },
+        {
+            "year": "1979",
+            "yearPopulationData": [
+                {"name": "China", "value": 1000000000},
+                {"name": "India", "value": 650000000},
+                {"name": "USA", "value": 250000000},
+                {"name": "Indonesia", "value": 170000000},
+                {"name": "Brazil", "value": 140000000},
+                {"name": "Russia", "value": 159000000},
+                {"name": "Pakistan", "value": 80000000},
+                {"name": "Bangladesh", "value": 90000000},
+                {"name": "Nigeria", "value": 70000000},
+                {"name": "Japan", "value": 130000000}
+            ]
+        },
+        {
+            "year": "1980",
+            "yearPopulationData": [
+                {"name": "China", "value": 1020000000},
+                {"name": "India", "value": 660000000},
+                {"name": "USA", "value": 255000000},
+                {"name": "Indonesia", "value": 175000000},
+                {"name": "Brazil", "value": 145000000},
+                {"name": "Russia", "value": 162000000},
+                {"name": "Pakistan", "value": 82000000},
+                {"name": "Bangladesh", "value": 92000000},
+                {"name": "Nigeria", "value": 72000000},
+                {"name": "Japan", "value": 133000000}
+            ]
+        }
+    ]
+}
+
+const worldPopulationContainer = document.querySelector('.histogram-population .container');
+let worldPopulationTitle = document.createElement('h2');
+worldPopulationTitle.textContent = worldPopulationData.header;
+worldPopulationTitle.classList.add('text-center', 'mb-4');
+worldPopulationContainer.appendChild(worldPopulationTitle);
+
+let worldPopulationYear = document.createElement('h3');
+worldPopulationYear.classList.add('text-center', 'text-muted', 'mb-4');
+worldPopulationYear.textContent = worldPopulationData.data[0].year;
+worldPopulationContainer.appendChild(worldPopulationYear);
+
+let worldPopulationTable = document.createElement('table');
+worldPopulationTable.classList.add('table');
+worldPopulationTable.innerHTML = `
+    <tbody>
+        ${worldPopulationData.data[0].yearPopulationData.map(item => `
+            <tr class="d-flex align-items-center">
+                <td style="flex: 0 0 100px;">${item.name}</td>
+                <td style="flex: 1 0 auto;">
+                  <div class="progressbar-wrapper" style="width: 100%;">
+                    <div class="progressbar progressbar-world-population" style="width: 0; height: 30px;"></div>
+                  </div>
+                </td>
+                <td style="flex: 0 0 100px;">${item.value}</td>
+            </tr>`).join('')}
+    </tbody>
+`;
+worldPopulationContainer.appendChild(worldPopulationTable);
+
+// Анимация прогрессбаров
+setTimeout(() => {
+    document.querySelectorAll('.progressbar-users-rating').forEach((bar, i) => {
+        bar.style.width = `${(usersRatingData.data[i].value / usersRatingData.maxvalue) * 100}%`;
+    });
+}, 100);
+setTimeout(() => {
+    document.querySelectorAll('.progressbar-world-population').forEach((bar, i) => {
+        bar.style.width = `${(worldPopulationData.data[0].yearPopulationData[i].value / worldPopulationData.maxvalue) * 100}%`;
+    });
+}, 100);
+
+// Обновление данных по годам каждые пол секунды
+let currentYearIndex = 0;
+console.log(12 % worldPopulationData.data.length);
+setInterval(() => {
+    currentYearIndex = (currentYearIndex + 1) % worldPopulationData.data.length;
+    const yearData = worldPopulationData.data[currentYearIndex];
+
+    worldPopulationYear.textContent = yearData.year;
+
+    const rows = worldPopulationTable.querySelectorAll('tr');
+    yearData.yearPopulationData.forEach((item, i) => {
+        rows[i].querySelector('.progressbar').style.width = `${(item.value / worldPopulationData.maxvalue) * 100}%`;
+        rows[i].querySelector('td:nth-child(3)').textContent = item.value;
+    });
+}, 1000);
+</script>
+</body>
+</html>
